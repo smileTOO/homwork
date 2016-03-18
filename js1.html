@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>js homwork1</title>
+</head>
+<body>
+  <script type="text/javascript">
+  //创建person 类
+    var Person = function(name){
+      this.name = name;
+      //this.count = count;
+      this.toString = function(){
+        return this.name;
+      } 
+    }
+    var ling = new Person('ling');
+    var long = new Person('long');
+    console.log(ling.toString());
+    console.log(long.toString());
+    Person.__defineGetter__('name', function(){return this.name});
+    Person.__defineSetter__('name', function(name){this.name = name;})
+    console.log(ling.name);
+    console.log(long.name);
+    
+    var Complex = function(x,y){
+    //mag 返回自身的模
+      this.r = function(){
+        return Math.sqrt(x * x + y * y);
+      }
+      //neg 自己取反
+      this.n = function(){
+        return -x + "+" + -y + "i";
+      }
+      //toString 返回字符串
+      this.t = function(){
+        return "num实数部分：" + x + "," + "num虚数部分：" + y;
+      }
+      //equal 方法
+      this.mul = function(hi){
+
+        if ((x==hi.x)&&(y==hi.y)) {
+          return true;
+        }
+        else{
+          return false;
+        }
+        
+    }
+    this.mu2 = function(ha){
+      return (x * ha.x - y * ha.y) + "+" + (y * ha.x + x * ha.y) + "i"; 
+    } 
+
+  }
+    var num1 = new Complex(1,-1);
+    var num2 = new Complex(2,3);
+
+    console.log(num1.r());
+    console.log(num2.r());
+    console.log(num1.n());
+    console.log(num2.n());
+    console.log(num1.t());
+    console.log(num2.t());
+    console.log(num1.mul(num2));
+    console.log(num1.mu2(num2));
+  </script>
+</body>
+</html>
